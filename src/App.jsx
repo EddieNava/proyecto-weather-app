@@ -3,14 +3,22 @@ import './App.css'
 import axios from 'axios' 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faWind, faDroplet, faCloud} from '@fortawesome/free-solid-svg-icons';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 function App() {
   
 const [obj, setObj] = useState ({})
 const [weather, setWeather] = useState ()
 const [isFar, setIsFar] = useState(false)
+const [loading, setLoading] = useState(false)
 
-
+useEffect (() => {
+ setLoading(true)
+ setTimeout(() => {
+   setLoading (false)
+ }, 3000)
+ 
+}, [])
 
 useEffect (() => {
  const success = pos => {
@@ -42,25 +50,27 @@ useEffect (() => {
   
 
   const changeTemp = () => setIsFar(!isFar) 
-  console.log (weather)
-
+  
    return (
     <div className="App" >
-      <div className={((weather?.main.temp > 30) ? "boxAppWarn"  : "boxApp")}>
-        <h2 className='nameApp'> Weather App</h2>
-        <h2 className='nameCity'> {weather?.name}, {weather?.sys.country} </h2>
-        <h2 className='nameDescription'> {weather?.weather[0].description} </h2>
-        <img className='icon' src={urlIcon} />
-        <h2 className='nameMain'> {weather?.weather[0].main} </h2>
-        <h1 className='temp'> {isFar ? tempFahrenheit : tempCelsius} {isFar ? "°F" : "°C"} </h1>
-        <button className={((weather?.main.temp > 30) ? "but-temp-warn"  : "but-temp")} onClick={changeTemp}> {isFar ? "Degrees Celsius" : "Degrees Fahrenheit"}</button>
-     
-      <div className='boxButton'>
-        <h3><FontAwesomeIcon icon={faCloud}/> Clouds {weather?.clouds.all} % </h3> 
-        <h3><FontAwesomeIcon icon={faWind}/> Wind S. {weather?.wind.speed} m/s </h3>
-        <h3><FontAwesomeIcon icon={faDroplet}/> Hum. {weather?.main.humidity} % </h3> 
-      </div>
-    </div>
+      { loading?
+         <ScaleLoader className="loading" color={`#3390FF`} loading={loading} size={150} /> 
+         :
+         <div className={((weather?.main.temp > 30) ? "boxAppWarn"  : "boxApp")}>
+            <h2 className='nameApp'> Weather App</h2>
+            <h2 className='nameCity'> {weather?.name}, {weather?.sys.country} </h2>
+            <h2 className='nameDescription'> {weather?.weather[0].description} </h2>
+            <img className='icon' src={urlIcon} />
+            <h2 className='nameMain'> {weather?.weather[0].main} </h2>
+            <h1 className='temp'> {isFar ? tempFahrenheit : tempCelsius} {isFar ? "°F" : "°C"} </h1>
+            <button className={((weather?.main.temp > 30) ? "but-temp-warn"  : "but-temp")} onClick={changeTemp}> {isFar ? "Degrees Celsius" : "Degrees Fahrenheit"}</button>
+          <div className='boxButton'>
+            <h3><FontAwesomeIcon icon={faCloud}/> Clouds {weather?.clouds.all} % </h3> 
+            <h3><FontAwesomeIcon icon={faWind}/> Wind S. {weather?.wind.speed} m/s </h3>
+            <h3><FontAwesomeIcon icon={faDroplet}/> Hum. {weather?.main.humidity} % </h3> 
+          </div>
+         </div>
+      }
    </div>
   )
 }
