@@ -1,0 +1,109 @@
+.App {
+  text-align: center;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./assets/fondo-weatherapp.jpg");
+  background-size: cover;
+
+}
+
+.boxApp {
+  background-color: rgba(76, 117, 165, 0.575);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 7px 0 #000a;
+  text-shadow: 30px;
+  text-align: center;
+  width: min(300px, 100%);
+  position: relative;
+}
+
+.boxAppWarn {
+  background-color: rgba(211, 41, 41, 0.541);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 7px 0 #000a;
+  text-shadow: 30px;
+  text-align: center;
+  width: min(300px, 100%);
+  position: relative;
+}
+
+.boxButton {
+  display: flex;
+  font-size: 15px;
+  gap: 12px;
+  color: white;
+  font-size: 15px; 
+  padding: 20px;
+  text-shadow: 30px;
+  text-align: center;
+  
+}
+
+.nameApp {
+  font-size: 28px;
+  color: white;
+  text-shadow: #000a;
+  text-shadow: 30px;
+}
+
+.nameCity {
+  font-size: 20px;
+  color: white;
+  text-shadow: #000a;
+}
+
+.nameDescription {
+  font-size: 18px;
+  color: white;
+  text-shadow: #000a;
+}
+
+
+.temp {
+  font-size: 50px;
+  color: white;
+  text-shadow: #000a;
+}
+
+.nameMain {
+  font-size: 25px;
+  color: white;
+  text-shadow: #000a;
+}
+
+
+.boxButton h3 {
+  font-size: 15px;
+}
+
+
+.icon {
+  height: 100px;
+}
+
+.but-temp-warn {
+  padding: 10px;
+  color: white;
+  background-color:rgb(211, 41, 41);
+  font-size: 15px;
+  border-radius: 5px;
+  border-color: white;
+  cursor: pointer;
+}
+
+.but-temp {
+  padding: 10px;
+  color: white;
+  background-color:rgb(76, 118, 165);
+  font-size: 15px;
+  border-radius: 5px;
+  border-color: white;
+  cursor: pointer;
+}
